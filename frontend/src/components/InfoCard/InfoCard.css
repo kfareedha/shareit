@@ -8,13 +8,14 @@
   width: 90%;
 }
 
-.infoHead {
+.InfoHead {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.infoHead > div:hover {
+.InfoHead > div:hover {
   cursor: pointer;
 }
 

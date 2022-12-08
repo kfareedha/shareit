@@ -1,5 +1,5 @@
 import React from "react";
-
+// import "./NavIcons.css";
 import Home from "../../img/home.png";
 import Noti from "../../img/noti.png";
 import Comment from "../../img/comment.png";
@@ -12,8 +12,7 @@ const NavIcons = () => {
       <Link to="../home">
         <img src={Home} alt="" />
       </Link>
-      <UilSetting />
-      <img src={Noti} alt="" />
+
       <Link to="../chat">
         <img src={Comment} alt="" />
       </Link>

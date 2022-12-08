@@ -34,14 +34,17 @@
   }
 }
 
-/* @media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px) {
   .Home {
     position: relative;
     display: grid;
     grid-template-columns: 20rem auto 20rem;
     gap: 1rem;
   }
-} */
+  .resp {
+    display: none;
+  }
+}
 
 /* @media only screen and (min-width: 600px) {
   .Navbar {

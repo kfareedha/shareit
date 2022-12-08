@@ -1,0 +1,7 @@
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 4rem;
+  transition: all 300ms ease;
+}

@@ -1,0 +1,27 @@
+.infoInput {
+  border: none;
+  outline: none;
+  background-color: var(--inputColor);
+  border-radius: 5px;
+  padding: 15px;
+  flex: 1;
+}
+.infoInput {
+  width: 400px;
+  min-width: 200px;
+  height: 12px;
+}
+.infoForm {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+.infoForm > div {
+  display: flex;
+  gap: 1rem;
+  height: 2rem;
+  width: 90%;
+}

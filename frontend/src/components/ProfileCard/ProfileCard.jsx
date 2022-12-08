@@ -30,7 +30,6 @@ const ProfileCard = ({ location }) => {
           alt="ProfileImage"
         />
       </div>
-
       <div className="ProfileName">
         <span>{user.username}</span>
         <span>{user.worksAt ? user.worksAt : "Write about yourself"}</span>
@@ -40,15 +39,15 @@ const ProfileCard = ({ location }) => {
         <hr />
         <div>
           <div className="follow">
-            <span>{user.following.length}</span>
-            <span>Following</span>
-          </div>
-          <div className="vl"></div>
-          <div className="follow">
             <span>{user.followers.length}</span>
             <span>Followers</span>
           </div>
-
+          <div className="vl"></div>
+          <div className="follow">
+            <span>{user.following.length}</span>
+            <span>Following</span>
+          </div>
+          {/* for profilepage */}
           {location === "profilePage" && (
             <>
               <div className="vl"></div>
@@ -63,13 +62,18 @@ const ProfileCard = ({ location }) => {
         </div>
         <hr />
       </div>
+
       {location === "profilePage" ? (
         ""
       ) : (
         <span>
           <Link
             to={`/profile/${user._id}`}
-            style={{ textDecoration: "none", color: "inherit" }}
+            style={{
+              textDecoration: "none",
+              textAlign: "center",
+              color: "#4d7e3e",
+            }}
           >
             My Profile
           </Link>

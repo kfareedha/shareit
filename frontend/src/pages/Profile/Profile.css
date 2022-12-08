@@ -10,3 +10,37 @@
   flex-direction: column;
   gap: 0.8rem;
 }
+@media only screen and (max-width: 600px) {
+  .Profile-center {
+    width: 90vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .ProfileSide {
+    display: none;
+  }
+  .RightSide {
+    display: none;
+  }
+  .PostSide {
+    width: 100%;
+  }
+  .Home {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .RightSide {
+    display: none;
+  }
+
+  .Profile {
+    position: relative;
+    display: grid;
+    grid-template-columns: 16rem auto;
+    gap: 1rem;
+  }
+}

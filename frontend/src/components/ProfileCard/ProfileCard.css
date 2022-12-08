@@ -1,4 +1,5 @@
 .ProfileCard {
+  width: 100%;
   border-radius: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -18,11 +19,17 @@
 
 .ProfileImages > img:nth-of-type(1) {
   width: 100%;
+
+  /* ht: 96px; */
 }
 
 .ProfileImages > img:nth-of-type(2) {
-  width: 6rem;
+  /* width: 6rem; */
+  /* border-radius: 50%; */
   border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  /* width: 96px; */
   position: absolute;
   bottom: -3rem;
   box-shadow: var(--profileShadow);

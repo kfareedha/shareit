@@ -31,10 +31,12 @@ const UserSchema = mongoose.Schema(
       type: Object,
       default: { mobile: false, email: false },
     },
+
+    country: String,
     profilePicture: String,
     coverPicture: String,
     about: String,
-    livesin: String,
+    livesIn: String,
     worksAt: String,
     relationship: String,
     followers: [],

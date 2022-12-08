@@ -6,10 +6,31 @@ import Login from "./pages/Login/login";
 import Signup from "./pages/Signup/signup";
 import Verify from "./pages/verify/verify";
 import { Routes, Route, Navigate } from "react-router-dom";
+import Chat from "./pages/Chat/Chat";
+import Followers from "./pages/followers/followers";
+
+import Admin from "./pages/Admin/Admin";
+import UserManagement from "./pages/UserManagement/usermanagement";
+import PostManagement from "./pages/postM/postM";
+import RPostManagement from "./pages/Rpost/Rpost";
+
 function App() {
   const user = useSelector((state) => state.authReducer.authData);
-  // const isLoggedIn = user?.token ? true : false;
-  // const isRegistered = user ? true : false;
+  // console.log(user.user.verified.email, "verifyyyy");
+  let admin = false;
+  console.log(user);
+  if (user) {
+    admin = user.user.isAdmin;
+    console.log(admin);
+    // admin=false
+  }
+  var token = user?.user?.verified.email || user?.user?.verified.mobile;
+  console.log(token, "tokkkk");
+  let isRegistered = user ? true : false;
+  console.log(isRegistered, "registertrue");
+  let isloggedIn = token ? true : false;
+  console.log(isloggedIn, "logintrue");
+
   return (
     <div className="App">
       <div className="blur" style={{ top: "-18%", right: "0" }}></div>
@@ -18,9 +39,13 @@ function App() {
         <Route
           path="/"
           element={
-            user ? (
-              user?.token ? (
-                <Navigate to="home" />
+            isRegistered ? (
+              isloggedIn ? (
+                admin ? (
+                  <Navigate to="../admin" />
+                ) : (
+                  <Navigate to="home" />
+                )
               ) : (
                 <Navigate to="/verify" />
               )
@@ -31,14 +56,28 @@ function App() {
         />
         <Route
           path="/verify"
-          element={user?.token ? <Navigate to="/home" /> : <Verify />}
+          element={
+            isRegistered ? (
+              isloggedIn ? (
+                <Navigate to="/home" />
+              ) : (
+                <Verify />
+              )
+            ) : (
+              <Navigate to="../auth" />
+            )
+          }
         />
         <Route
           path="/home"
           element={
-            user ? (
-              user?.token ? (
-                <Home />
+            isRegistered ? (
+              isloggedIn ? (
+                admin ? (
+                  <Admin />
+                ) : (
+                  <Home />
+                )
               ) : (
                 <Navigate to="/verify" />
               )
@@ -50,9 +89,13 @@ function App() {
         <Route
           path="/auth"
           element={
-            user ? (
-              user?.token ? (
-                <Navigate to="../home" />
+            isRegistered ? (
+              isloggedIn ? (
+                admin ? (
+                  <Navigate to="../admin" />
+                ) : (
+                  <Navigate to="../home" />
+                )
               ) : (
                 <Navigate to="/verify" />
               )
@@ -64,8 +107,8 @@ function App() {
         <Route
           path="/signup"
           element={
-            user ? (
-              user?.token ? (
+            isRegistered ? (
+              isloggedIn ? (
                 <Navigate to="../home" />
               ) : (
                 <Navigate to="/verify" />
@@ -77,8 +120,23 @@ function App() {
         />
         <Route
           path="/profile/:id"
-          element={user ? <Profile /> : <Navigate to="../auth" />}
+          element={isRegistered ? <Profile /> : <Navigate to="../auth" />}
         />
+        <Route
+          path="/followers"
+          element={isRegistered ? <Followers /> : <Navigate to="../auth" />}
+        />
+        <Route
+          path="/chat"
+          element={isloggedIn ? <Chat /> : <Navigate to="../auth" />}
+        />
+        <Route
+          path="/admin"
+          element={admin ? <Admin /> : <Navigate to="../auth" />}
+        />
+        <Route path="/admin/users" element={<UserManagement />} />
+        <Route path="/admin/posts" element={<PostManagement />} />
+        <Route path="/admin/rposts" element={<RPostManagement />} />
       </Routes>
     </div>
   );
